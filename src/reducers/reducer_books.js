@@ -1,4 +1,4 @@
-function () {
+export default function () {
 	return [
 	{ title: 'Javascript: The Good Parts'},
 	{ title: 'De Ontdekking van de Hemel'},
