@@ -37,6 +37,8 @@ function mapStateToProps(state) {
 	};
 }
 
+//Anything returned from this function ends up as props on bookList (this.props.selectBook) - the first 'selectBook' is the magical word here.
+//Whenever selectBook is called, results is passed (dispatched) to all reducers. Dispatch is this funnel.
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ selectBook: selectBook }, dispatch)
 }
