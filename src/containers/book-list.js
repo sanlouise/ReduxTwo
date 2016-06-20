@@ -5,6 +5,9 @@
 //Just read 'state' as being 'entire data model'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectBook } from '../actions/index';
+import { bindActionCreators } from 'redux';
+
 
 class BookList extends Component {
 	renderList() {
@@ -34,6 +37,10 @@ function mapStateToProps(state) {
 	};
 }
 
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ selectBook: selectBook }, dispatch)
+}
+
 //Always - in container files - export at the very end to export the entire container and not individual parts.
 //Connect takes a function and a component and produces a container.
-export default connect(mapStateToProps)(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
