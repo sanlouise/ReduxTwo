@@ -9,22 +9,25 @@ import { connect } from 'react-redux';
 class BookList extends Component {
 	renderList() {
 		return this.props.books.map((book) => {
-			return {
-				<li key={book.title} className="list-group-item">{book.title}</li>
-			};
+			return (
+		<li key={book.title} className= "list-group-item">
+			{book.title}
+		</li>
+			);
 		});
 	}
 	render () {
 		return (
-			<ul className ="list-group col-sm-4"
+			<ul className ="list-group col-sm-4">
 				{this.renderList()}
 			</ul>
 		)
 	}
 }
 
-// Take appliction state as arguments, book and active book.
-// Whatever is returned will show up as props inside of booklist.
+//This function is the glue between React and Redux!
+//Whenever application state changes, such as when books take a while to load or when a user clicks a book
+//and that changes the list etc. this container (our book-list) will instantly re-render with a new list of books.
 function mapStateToProps(state) {
 	return {
 		books: state.books
@@ -32,4 +35,5 @@ function mapStateToProps(state) {
 }
 
 //Always - in container files - export at the very end to export the entire container and not individual parts.
+//Connect takes a function and a component and produces a container.
 export default connect(mapStateToProps)(BookList);
